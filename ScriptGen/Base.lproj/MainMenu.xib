@@ -769,7 +769,7 @@
                             <action selector="remove:" target="x08-tj-3hP" id="ZUI-sO-b60"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0DF-qO-2yn">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" tag="23" translatesAutoresizingMaskIntoConstraints="NO" id="0DF-qO-2yn">
                         <rect key="frame" x="20" y="28" width="395" height="509"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ShL-NY-aHL">
@@ -782,7 +782,7 @@
                             <outlet property="delegate" destination="494" id="S6G-HR-yM2"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xPO-sC-LxM">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" tag="24" translatesAutoresizingMaskIntoConstraints="NO" id="xPO-sC-LxM">
                         <rect key="frame" x="419" y="215" width="240" height="267"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="uyA-P6-zbU">
@@ -792,6 +792,7 @@
                         </textFieldCell>
                         <connections>
                             <binding destination="x08-tj-3hP" name="value" keyPath="selection.comment" id="li9-NW-fah"/>
+                            <outlet property="delegate" destination="494" id="SV8-ew-KcL"/>
                         </connections>
                     </textField>
                 </subviews>
@@ -799,6 +800,7 @@
         </window>
         <customObject id="494" customClass="DHAppDelegate">
             <connections>
+                <outlet property="SlideArrayController" destination="x08-tj-3hP" id="7WK-Tr-wxY"/>
                 <outlet property="window" destination="371" id="532"/>
             </connections>
         </customObject>

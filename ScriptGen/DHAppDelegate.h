@@ -8,8 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface DHAppDelegate : NSObject <NSApplicationDelegate, NSControlTextEditingDelegate>
+static const NSInteger kTextFieldCode = 23;
+static const NSInteger kTextFieldComment = 24;
+
+@interface DHAppDelegate : NSObject <NSApplicationDelegate,  NSControlTextEditingDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (weak) IBOutlet NSArrayController *SlideArrayController;
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector;
 @end

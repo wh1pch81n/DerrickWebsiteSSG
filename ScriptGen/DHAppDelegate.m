@@ -7,7 +7,7 @@
 //
 
 #import "DHAppDelegate.h"
-
+#import "DHSlideModel.h"
 @implementation DHAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -19,19 +19,26 @@
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
 	BOOL result = NO;
 	
-    if (commandSelector == @selector(insertNewline:)) {
-        // new line action:
-        // always insert a line-break character and don’t cause the receiver to end editing
-        [textView insertNewlineIgnoringFieldEditor:self];
-        result = YES;
-	} //else if (commandSelector == @selector(insertTab:)) {
-      //  // tab action:
-      //  // always insert a tab character and don’t cause the receiver to end editing
-      //  [textView insertTabIgnoringFieldEditor:self];
-	  //
-      //  result = YES;
-	  //}
-	
+    switch ([control tag]) {
+		case kTextFieldCode:
+			if (commandSelector == @selector(insertNewline:)) {
+				[textView insertText:@"\n"];
+				result = YES;
+			} else if (commandSelector == @selector(insertTab:)) {
+				[textView insertText:@"`"];
+				result = YES;
+			} 
+			break;
+		case kTextFieldComment:
+			if (commandSelector == @selector(insertNewline:)) {
+				[textView insertText:@"\n"];
+				result = YES;
+			} else if (commandSelector == @selector(insertTab:)) {
+				[self.SlideArrayController add:[DHSlideModel new]];
+				result = NO;
+			}
+			break;
+	}
     return result;
 }
 @end
