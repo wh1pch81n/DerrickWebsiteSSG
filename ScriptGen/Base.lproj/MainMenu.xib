@@ -755,7 +755,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="add:" target="x08-tj-3hP" id="7Lq-gZ-dJf"/>
+                            <action selector="insert:" target="x08-tj-3hP" id="h8t-FQ-99r"/>
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2M3-zS-EG8">

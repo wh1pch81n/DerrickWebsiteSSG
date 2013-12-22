@@ -34,7 +34,7 @@
 				[textView insertText:@"\n"];
 				result = YES;
 			} else if (commandSelector == @selector(insertTab:)) {
-				[self.SlideArrayController add:[DHSlideModel new]];
+				[self.SlideArrayController insert:[DHSlideModel new]];
 				result = NO;
 			}
 			break;
