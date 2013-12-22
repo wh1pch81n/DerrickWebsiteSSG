@@ -18,6 +18,7 @@
 		7FCB33EF1866823200460C87 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FCB33CE1866823200460C87 /* Cocoa.framework */; };
 		7FCB33F71866823200460C87 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7FCB33F51866823200460C87 /* InfoPlist.strings */; };
 		7FCB33F91866823200460C87 /* ScriptGenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FCB33F81866823200460C87 /* ScriptGenTests.m */; };
+		7FCB34041866872800460C87 /* DHSlideModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FCB34031866872800460C87 /* DHSlideModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,8 @@
 		7FCB33F41866823200460C87 /* ScriptGenTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ScriptGenTests-Info.plist"; sourceTree = "<group>"; };
 		7FCB33F61866823200460C87 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7FCB33F81866823200460C87 /* ScriptGenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScriptGenTests.m; sourceTree = "<group>"; };
+		7FCB34021866872800460C87 /* DHSlideModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHSlideModel.h; sourceTree = "<group>"; };
+		7FCB34031866872800460C87 /* DHSlideModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHSlideModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,8 @@
 				7FCB33E01866823200460C87 /* DHAppDelegate.h */,
 				7FCB33E11866823200460C87 /* DHAppDelegate.m */,
 				7FCB33E31866823200460C87 /* MainMenu.xib */,
+				7FCB34021866872800460C87 /* DHSlideModel.h */,
+				7FCB34031866872800460C87 /* DHSlideModel.m */,
 				7FCB33E61866823200460C87 /* Images.xcassets */,
 				7FCB33D51866823200460C87 /* Supporting Files */,
 			);
@@ -253,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FCB34041866872800460C87 /* DHSlideModel.m in Sources */,
 				7FCB33E21866823200460C87 /* DHAppDelegate.m in Sources */,
 				7FCB33DB1866823200460C87 /* main.m in Sources */,
 			);
