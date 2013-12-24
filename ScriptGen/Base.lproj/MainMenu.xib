@@ -718,6 +718,7 @@
                         </textFieldCell>
                         <connections>
                             <binding destination="x08-tj-3hP" name="value" keyPath="selection.header" id="gmb-33-FxQ"/>
+                            <outlet property="delegate" destination="k9N-zo-lnk" id="hqn-29-hcz"/>
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LWf-8v-q63">
@@ -779,7 +780,7 @@
                         </textFieldCell>
                         <connections>
                             <binding destination="x08-tj-3hP" name="value" keyPath="selection.code" id="HdZ-70-RV9"/>
-                            <outlet property="delegate" destination="494" id="S6G-HR-yM2"/>
+                            <outlet property="delegate" destination="k9N-zo-lnk" id="aYv-Fv-fka"/>
                         </connections>
                     </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" tag="24" translatesAutoresizingMaskIntoConstraints="NO" id="xPO-sC-LxM">
@@ -792,7 +793,7 @@
                         </textFieldCell>
                         <connections>
                             <binding destination="x08-tj-3hP" name="value" keyPath="selection.comment" id="li9-NW-fah"/>
-                            <outlet property="delegate" destination="494" id="SV8-ew-KcL"/>
+                            <outlet property="delegate" destination="k9N-zo-lnk" id="y57-EI-ZwF"/>
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KcO-G0-Kf0">
@@ -806,14 +807,18 @@
                     </textField>
                 </subviews>
             </view>
-        </window>
-        <customObject id="494" customClass="DHAppDelegate">
             <connections>
-                <outlet property="SlideArrayController" destination="x08-tj-3hP" id="7WK-Tr-wxY"/>
-                <outlet property="window" destination="371" id="532"/>
+                <outlet property="delegate" destination="k9N-zo-lnk" id="QTS-aW-izv"/>
+            </connections>
+        </window>
+        <customObject id="494" customClass="DHAppDelegate"/>
+        <customObject id="420" customClass="NSFontManager"/>
+        <customObject id="k9N-zo-lnk" customClass="DHDocument">
+            <connections>
+                <outlet property="SlideArrayController" destination="x08-tj-3hP" id="MC2-MM-Zqv"/>
+                <outlet property="window" destination="371" id="PP8-K3-puL"/>
             </connections>
         </customObject>
-        <customObject id="420" customClass="NSFontManager"/>
         <arrayController objectClassName="DHSlideModel" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="x08-tj-3hP"/>
     </objects>
     <resources>

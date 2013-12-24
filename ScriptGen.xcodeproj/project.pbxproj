@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F6CBEF0186A495E0063649D /* DHDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6CBEEE186A495E0063649D /* DHDocument.m */; };
 		7FCB33CF1866823200460C87 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FCB33CE1866823200460C87 /* Cocoa.framework */; };
 		7FCB33D91866823200460C87 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7FCB33D71866823200460C87 /* InfoPlist.strings */; };
 		7FCB33DB1866823200460C87 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FCB33DA1866823200460C87 /* main.m */; };
@@ -32,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F6CBEED186A495E0063649D /* DHDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHDocument.h; sourceTree = "<group>"; };
+		7F6CBEEE186A495E0063649D /* DHDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHDocument.m; sourceTree = "<group>"; };
 		7FCB33CB1866823200460C87 /* ScriptGen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScriptGen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FCB33CE1866823200460C87 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7FCB33D11866823200460C87 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -121,6 +124,8 @@
 				7FCB33E01866823200460C87 /* DHAppDelegate.h */,
 				7FCB33E11866823200460C87 /* DHAppDelegate.m */,
 				7FCB33E31866823200460C87 /* MainMenu.xib */,
+				7F6CBEED186A495E0063649D /* DHDocument.h */,
+				7F6CBEEE186A495E0063649D /* DHDocument.m */,
 				7FCB34021866872800460C87 /* DHSlideModel.h */,
 				7FCB34031866872800460C87 /* DHSlideModel.m */,
 				7FCB33E61866823200460C87 /* Images.xcassets */,
@@ -260,6 +265,7 @@
 			files = (
 				7FCB34041866872800460C87 /* DHSlideModel.m in Sources */,
 				7FCB33E21866823200460C87 /* DHAppDelegate.m in Sources */,
+				7F6CBEF0186A495E0063649D /* DHDocument.m in Sources */,
 				7FCB33DB1866823200460C87 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,6 +477,7 @@
 				7FCB33FE1866823200460C87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7FCB33FF1866823200460C87 /* Build configuration list for PBXNativeTarget "ScriptGenTests" */ = {
 			isa = XCConfigurationList;
@@ -479,6 +486,7 @@
 				7FCB34011866823200460C87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
