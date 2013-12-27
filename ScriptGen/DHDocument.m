@@ -33,22 +33,14 @@
 	// Add any code here that needs to be executed once the windowController has loaded the document's window.
 }
 
+
+#pragma mark - File Handling
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
 {
 	// Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
 	// You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
-	//    if (outError) {
-	//        *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:unimpErr userInfo:nil];
-	//    }
-	//
-	//
-	//
-	//    return nil;
 	
-	//[self setMString:[self.textView textStorage]]; // Synchronize data model with the text storage
-	//[self.textView breakUndoCoalescing];
-
-	NSString *slideShowStr = [self slideShowToString];
+	//NSString *slideShowStr = [self slideShowToString];
 	//data = [slideShowStr dataUsingEncoding:NSASCIIStringEncoding];
 
 	NSAttributedString *mString = [[NSAttributedString alloc] initWithString:
@@ -70,6 +62,50 @@
 	return data;
 }
 
+
+
+- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError
+{
+	// Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
+	// You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
+	// If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
+	if (outError) {
+		*outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:unimpErr userInfo:nil];
+	}
+	return YES;
+}
+
++ (BOOL)autosavesInPlace
+{
+	return YES;
+}
+
+/*Method needed to silence warning "Trying to save a document without any appropriate writable type defined."*/
+- (NSArray *)writableTypesForSaveOperation:(NSSaveOperationType)saveOperation {
+	NSArray *arrOfTypes;
+	switch (saveOperation) {
+		case NSSaveOperation:
+		case NSSaveAsOperation:
+			arrOfTypes = [self allowedFileTypes];
+			break;
+	}
+	return arrOfTypes;
+}
+
+- (BOOL)prepareSavePanel:(NSSavePanel *)savePanel {
+	[savePanel setCanSelectHiddenExtension:NO];
+	[savePanel setExtensionHidden:NO];
+	[savePanel setAllowedFileTypes:[self allowedFileTypes]];
+	[savePanel setAllowsOtherFileTypes:NO];
+	return YES;
+}
+
+- (NSArray *)allowedFileTypes {
+	return @[@"txt"];
+}
+
+
+#pragma mark - SlideShow Accessor Methods
 - (NSString *)slideShowToString {
 	NSMutableString *slideShowString = [NSMutableString new];
 	NSArray *arrOfSlides = self.SlideArrayController.arrangedObjects;
@@ -91,7 +127,7 @@
 
 - (NSString *)questionAnswerToString {
 	//NSMutableString *questionAnswerString = [NSMutableString new];
-
+	
 	//return questionAnswerString;
 	return @"";
 }
@@ -100,22 +136,7 @@
 	return @"@end\n";
 }
 
-- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError
-{
-	// Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
-	// You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
-	// If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
-	if (outError) {
-		*outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:unimpErr userInfo:nil];
-	}
-	return YES;
-}
-
-+ (BOOL)autosavesInPlace
-{
-	return YES;
-}
-
+#pragma mark - TextField Control
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
 	BOOL result = NO;
 	
