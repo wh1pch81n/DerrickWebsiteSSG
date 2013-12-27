@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface DHQuestionAnswerModel : NSObject
-@property (strong, atomic) NSString *question, *answer;
+@property (strong, atomic) NSString *mQuestion, *mAnswer;
 @end
