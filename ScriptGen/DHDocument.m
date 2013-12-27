@@ -45,27 +45,59 @@
 	//
 	//    return nil;
 	
-	NSData *data;
 	//[self setMString:[self.textView textStorage]]; // Synchronize data model with the text storage
-	NSMutableDictionary *dict = [[NSDictionary dictionaryWithObject:NSPlainTextDocumentType
-																													forKey:NSDocumentTypeDocumentAttribute] mutableCopy];
 	//[self.textView breakUndoCoalescing];
-	NSString *temp = @"hello World";
-	//NSLog(@"%@", self.SlideArrayController );
-	for (DHSlideModel *m in self.SlideArrayController.content) {// use this to draw out the contents of the array controller
-    NSLog(@"%@", m);
-		NSLog(@"%@", m.code);
-		NSLog(@"%@", m.header);
-		NSLog(@"%@", m.comment);
-	}
-	data = [temp  dataUsingEncoding:NSASCIIStringEncoding];
-	//data = [self.mString dataFromRange:NSMakeRange(0, [self.mString length])
-//									documentAttributes:dict error:outError];
+
+	NSString *slideShowStr = [self slideShowToString];
+	//data = [slideShowStr dataUsingEncoding:NSASCIIStringEncoding];
+
+	NSAttributedString *mString = [[NSAttributedString alloc] initWithString:
+																 [NSString stringWithFormat:@"%@%@%@",
+																	[self slideShowToString],
+																	[self questionAnswerToString],
+																	[self endSlideString]]];
+	NSData *data = [mString dataFromRange:NSMakeRange(0, mString.length)
+						 documentAttributes:@{
+																	NSDocumentTypeDocumentAttribute:
+																		NSPlainTextDocumentType
+																	}
+													error:outError];
+
 	if (!data && outError) {
 		*outError = [NSError errorWithDomain:NSCocoaErrorDomain
 																		code:NSFileWriteUnknownError userInfo:nil];
 	}
 	return data;
+}
+
+- (NSString *)slideShowToString {
+	NSMutableString *slideShowString = [NSMutableString new];
+	NSArray *arrOfSlides = self.SlideArrayController.arrangedObjects;
+	
+	for (NSInteger i = arrOfSlides.count -1; i >= 0; --i) {
+		DHSlideModel *m = arrOfSlides[i];
+		if (m && m.code && m.header && m.comment) {
+			[slideShowString appendString:[NSString stringWithFormat:@"%@%@\n%@%@\n%@%@\n",
+																		 @"@code\n",
+																		 [m.code stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]],
+																		 @"@header\n",
+																		 [m.header stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]],
+																		 @"@comment\n",
+																		 [m.comment stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]]];
+		}
+	}
+	return slideShowString;
+}
+
+- (NSString *)questionAnswerToString {
+	//NSMutableString *questionAnswerString = [NSMutableString new];
+
+	//return questionAnswerString;
+	return @"";
+}
+
+- (NSString *)endSlideString {
+	return @"@end\n";
 }
 
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError
