@@ -197,7 +197,13 @@ static const NSInteger kTextFieldAnswer = 11;
 				[textView insertText:@"\n"];
 				result = YES;
 			} else if (commandSelector == @selector(insertTab:)) {
-				[self.slideArrayController insert:[DHSlideModel new]];
+				//Put previously selected slide's code in new slide
+				NSInteger index = self.slideArrayController.selectionIndex;
+				NSString *prevSlideCode = [(DHSlideModel *)self.slideArrayController.arrangedObjects[index] code];
+				DHSlideModel *newSlide = [DHSlideModel new];
+				[newSlide setCode:prevSlideCode];
+				[self.slideArrayController insertObject:newSlide
+													atArrangedObjectIndex:index];
 				result = NO;
 			}
 			break;
