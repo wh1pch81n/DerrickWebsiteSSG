@@ -775,12 +775,12 @@
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" tag="23" translatesAutoresizingMaskIntoConstraints="NO" id="0DF-qO-2yn">
-                        <rect key="frame" x="20" y="28" width="395" height="509"/>
+                        <rect key="frame" x="22" y="28" width="395" height="509"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ShL-NY-aHL">
-                            <font key="font" metaFont="system"/>
+                            <font key="font" size="13" name="Menlo-Regular"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" red="1" green="0.94302110221771696" blue="0.58003699896126193" alpha="1" colorSpace="calibratedRGB"/>
                         </textFieldCell>
                         <connections>
                             <binding destination="x08-tj-3hP" name="value" keyPath="selection.code" id="gYu-F3-mK1">
