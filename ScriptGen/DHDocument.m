@@ -110,7 +110,6 @@ static const NSInteger kTextFieldAnswer = 11;
 	return @[@"txt"];
 }
 
-
 #pragma mark - SlideShow Accessor Methods
 /**
  Retrieves the code/header/comment data from the array controller then returns a formated version

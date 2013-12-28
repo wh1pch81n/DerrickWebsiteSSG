@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface DHAppDelegate : NSObject <NSApplicationDelegate,  NSControlTextEditingDelegate>
+@interface DHAppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
 
