@@ -815,8 +815,9 @@
         <customObject id="420" customClass="NSFontManager"/>
         <customObject id="k9N-zo-lnk" customClass="DHDocument">
             <connections>
-                <outlet property="SlideArrayController" destination="x08-tj-3hP" id="MC2-MM-Zqv"/>
-                <outlet property="window" destination="371" id="PP8-K3-puL"/>
+                <outlet property="qaArrayController" destination="IMA-io-6Vz" id="ZHU-Ho-UJL"/>
+                <outlet property="slideArrayController" destination="x08-tj-3hP" id="kFb-wj-GP7"/>
+                <outlet property="window" destination="beM-gU-3kQ" id="qoq-DO-ctd"/>
             </connections>
         </customObject>
         <arrayController objectClassName="DHSlideModel" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="x08-tj-3hP" userLabel="Array Controller - slideshow"/>
@@ -838,7 +839,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ith-Ci-vQ2">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" tag="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ith-Ci-vQ2">
                         <rect key="frame" x="20" y="253" width="432" height="92"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="UuD-zZ-8gL">
@@ -848,6 +849,7 @@
                         </textFieldCell>
                         <connections>
                             <binding destination="IMA-io-6Vz" name="value" keyPath="selection.mQuestion" id="p5S-ao-ccK"/>
+                            <outlet property="delegate" destination="k9N-zo-lnk" id="ZLb-EH-7dy"/>
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGP-cE-kqc">
@@ -859,7 +861,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dSe-vg-kLL">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="dSe-vg-kLL">
                         <rect key="frame" x="20" y="141" width="432" height="92"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="WLe-h0-yW4">
@@ -869,6 +871,7 @@
                         </textFieldCell>
                         <connections>
                             <binding destination="IMA-io-6Vz" name="value" keyPath="selection.mAnswer" id="94S-8y-Naf"/>
+                            <outlet property="delegate" destination="k9N-zo-lnk" id="bAc-MM-itl"/>
                         </connections>
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nxh-8i-AZp">
@@ -907,7 +910,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="180" minWidth="40" maxWidth="1000" id="AAT-j9-dqB">
+                                        <tableColumn editable="NO" width="180" minWidth="40" maxWidth="1000" id="AAT-j9-dqB">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -923,7 +926,7 @@
                                                 <binding destination="IMA-io-6Vz" name="value" keyPath="arrangedObjects.mQuestion" id="QhM-hu-k4J"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="244" minWidth="40" maxWidth="1000" id="kCi-40-VBx">
+                                        <tableColumn editable="NO" width="244" minWidth="40" maxWidth="1000" id="kCi-40-VBx">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -963,6 +966,9 @@
                     </scrollView>
                 </subviews>
             </view>
+            <connections>
+                <outlet property="delegate" destination="k9N-zo-lnk" id="NiI-Ei-VQq"/>
+            </connections>
         </window>
         <arrayController objectClassName="DHQuestionAnswerModel" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="IMA-io-6Vz" userLabel="Array Controller - Q&amp;A"/>
     </objects>

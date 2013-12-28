@@ -8,6 +8,12 @@
 
 #import "DHDocument.h"
 #import "DHSlideModel.h"
+#import "DHQuestionAnswerModel.h"
+
+static const NSInteger kTextFieldCode = 23;
+static const NSInteger kTextFieldComment = 24;
+static const NSInteger kTextFieldQuestion = 10;
+static const NSInteger kTextFieldAnswer = 11;
 
 @implementation DHDocument
 
@@ -106,9 +112,17 @@
 
 
 #pragma mark - SlideShow Accessor Methods
+/**
+ Retrieves the code/header/comment data from the array controller then returns a formated version
+ @return (NSString *) The formated string
+ */
+/*
+ The Table that holds that slides is ordered from 0 down to n-1.  But slide order is from
+ n-1 to 0. Need for a Reverse Reading of the Array Controller
+ */
 - (NSString *)slideShowToString {
 	NSMutableString *slideShowString = [NSMutableString new];
-	NSArray *arrOfSlides = self.SlideArrayController.arrangedObjects;
+	NSArray *arrOfSlides = self.slideArrayController.arrangedObjects;
 	
 	for (NSInteger i = arrOfSlides.count -1; i >= 0; --i) {
 		DHSlideModel *m = arrOfSlides[i];
@@ -125,13 +139,44 @@
 	return slideShowString;
 }
 
+/**
+ Gets the Question and Answers from the Q&A Array controller then returns a formated string
+ @return (NSString *) formated string
+ */
 - (NSString *)questionAnswerToString {
-	//NSMutableString *questionAnswerString = [NSMutableString new];
-	
-	//return questionAnswerString;
-	return @"";
+	return [self questionAnswerToString:0];
 }
 
+/**
+ Gets the Question and Answers from the Q&A Array controller then returns a formated string
+ @param index The index of the array. Should always start a 0
+ @return (NSString *) formated string
+ */
+/*
+ The Table that holds that questions is ordered from 0 down to n-1.  But slide order is from
+ n-1 to 0. Need for a Reverse Reading of the Array Controller
+ */
+- (NSString *)questionAnswerToString:(NSInteger)index {
+	if ([self.qaArrayController.arrangedObjects count] <= index) {
+		return @"";
+	}
+	DHQuestionAnswerModel *qa = self.qaArrayController.arrangedObjects[index];
+	NSString *question = [qa.mQuestion stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	NSString *answer = [qa.mAnswer stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	return [NSString stringWithFormat:@"%@%@%@%@%@%@%@",
+					[self questionAnswerToString:index + 1],
+					question?@"@question\n":@"",
+					question?:@"",
+					question?@"\n":@"",
+					answer?@"@answer\n":@"",
+					answer?:@"",
+					answer?@"\n":@""];
+}
+
+/**
+ Returnes the end marker
+ @return (NSString *) the end marker as a string
+ */
 - (NSString *)endSlideString {
 	return @"@end\n";
 }
@@ -142,11 +187,9 @@
 	
 	switch ([control tag]) {
 		case kTextFieldCode:
+		case kTextFieldQuestion:
 			if (commandSelector == @selector(insertNewline:)) {
 				[textView insertText:@"\n"];
-				result = YES;
-			} else if (commandSelector == @selector(insertTab:)) {
-				[textView insertText:@"`"];
 				result = YES;
 			}
 			break;
@@ -155,7 +198,16 @@
 				[textView insertText:@"\n"];
 				result = YES;
 			} else if (commandSelector == @selector(insertTab:)) {
-				[self.SlideArrayController insert:[DHSlideModel new]];
+				[self.slideArrayController insert:[DHSlideModel new]];
+				result = NO;
+			}
+			break;
+		case kTextFieldAnswer:
+			if (commandSelector == @selector(insertNewline:)) {
+				[textView insertText:@"\n"];
+				result = YES;
+			} else if (commandSelector == @selector(insertTab:)) {
+				[self.qaArrayController insert:[DHQuestionAnswerModel new]];
 				result = NO;
 			}
 			break;
