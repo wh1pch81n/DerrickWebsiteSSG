@@ -15,6 +15,10 @@ static const NSInteger kTextFieldComment = 24;
 static const NSInteger kTextFieldQuestion = 10;
 static const NSInteger kTextFieldAnswer = 11;
 
+@interface DHDocument ()
+- (IBAction)pressedOpenMenuOption:(id)sender;
+@end
+
 @implementation DHDocument
 
 - (id)init
@@ -109,6 +113,28 @@ static const NSInteger kTextFieldAnswer = 11;
 - (NSArray *)allowedFileTypes {
 	return @[@"txt"];
 }
+
+- (IBAction)pressedOpenMenuOption:(id)sender {
+	NSOpenPanel *panel = [NSOpenPanel openPanel];
+	[panel setFloatingPanel:YES];
+	[panel setCanChooseDirectories:NO];
+	[panel setCanChooseFiles:YES];
+	[panel setAllowsMultipleSelection:NO];
+	[panel setAllowedFileTypes:[self allowedFileTypes]];
+	int userResponse = [panel runModal];
+	if (userResponse == NSOKButton) {
+		//NSLog(@"%@", [panel URL]);
+		[self loadDocumentWithFile:[panel URL]];
+	}
+}
+
+- (void)loadDocumentWithFile:(NSURL *)url {
+	NSString *s = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:nil];
+	DHSlideModel *slide = [DHSlideModel new];
+	[slide setCode:s];
+	[[self slideArrayController] insertObject:slide atArrangedObjectIndex:0];
+}
+
 
 #pragma mark - SlideShow Accessor Methods
 /**
