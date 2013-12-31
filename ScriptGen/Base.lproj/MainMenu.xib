@@ -647,7 +647,7 @@
             </items>
         </menu>
         <window title="ScriptGen" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="0.0" y="221" width="679" height="557"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
@@ -836,7 +836,7 @@
         </customObject>
         <arrayController objectClassName="DHSlideModel" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="x08-tj-3hP" userLabel="Array Controller - slideshow"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" wantsToBeColor="NO" animationBehavior="default" id="beM-gU-3kQ">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="780" y="413" width="500" height="365"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
