@@ -8,6 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 
+extern NSString *const kCodeMarker;
+extern NSString *const kHeaderMarker;
+extern NSString *const kCommentMarker;
+extern NSString *const kAddSlideMarker;
+extern NSString *const kQuestionMarker;
+extern NSString *const kAnswerMarker;
+extern NSString *const kEndMarker;
+
 @interface DHDocument : NSDocument <NSControlTextEditingDelegate>
 @property (weak) IBOutlet NSArrayController *slideArrayController;
 @property (weak) IBOutlet NSArrayController *qaArrayController;

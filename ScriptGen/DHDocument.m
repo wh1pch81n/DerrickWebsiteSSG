@@ -15,6 +15,14 @@ static const NSInteger kTextFieldComment = 24;
 static const NSInteger kTextFieldQuestion = 10;
 static const NSInteger kTextFieldAnswer = 11;
 
+NSString *const kCodeMarker = @"@code";
+NSString *const kHeaderMarker = @"@header";
+NSString *const kCommentMarker = @"@comment";
+NSString *const kAddSlideMarker = @"@addSlide";
+NSString *const kQuestionMarker = @"@question";
+NSString *const kAnswerMarker = @"@answer";
+NSString *const kEndMarker = @"@end";
+
 @interface DHDocument ()
 - (IBAction)pressedOpenMenuOption:(id)sender;
 @end
@@ -140,10 +148,12 @@ static const NSInteger kTextFieldAnswer = 11;
 	DHQuestionAnswerModel *qna = nil;
 	__block void (^handler)(NSString *);
 	for (NSString *line in fileArr) {
-    if ([line isEqualToString:@"@code"]) {
+		if ([line isEqualToString:kAddSlideMarker]) {
 			if (slide){
 				[self.slideArrayController insertObject:slide atArrangedObjectIndex:0];
+				slide = nil;
 			}
+		} else if ([line isEqualToString:kCodeMarker]) {
 			slide = [DHSlideModel new];
 			slide.code = slide.header = slide.comment = @"";
 			handler = ^(NSString *line){
@@ -151,34 +161,35 @@ static const NSInteger kTextFieldAnswer = 11;
 												slide.code,
 												line]];
 			};
-		} else if ([line isEqualToString:@"@header"]) {
+		} else if ([line isEqualToString:kHeaderMarker]) {
 			handler = ^(NSString *line){
 				[slide setHeader:[slide.header stringByAppendingString:line]];
 			};
-		} else if ([line isEqualToString:@"@comment"]) {
+		} else if ([line isEqualToString:kCommentMarker]) {
 			handler = ^(NSString *line){
 				[slide setComment:[NSString stringWithFormat:@"%@%@\n",
 													 slide.comment,
 													 line]];
 			};
-		} else if ([line isEqualToString:@"@question"]) {
+		} else if ([line isEqualToString:kQuestionMarker]) {
 			if (qna) {
 				[self.qaArrayController insertObject:qna atArrangedObjectIndex:0];
+				qna = nil;
 			}
 			qna = [DHQuestionAnswerModel new];
 			qna.mQuestion = qna.mAnswer = @"";
 			handler = ^(NSString *line){
 				[qna setMQuestion:[NSString stringWithFormat:@"%@%@\n",
-												 qna.mQuestion,
-												 line]];
+													 qna.mQuestion,
+													 line]];
 			};
-		} else if ([line isEqualToString:@"@answer"]) {
+		} else if ([line isEqualToString:kAnswerMarker]) {
 			handler = ^(NSString *line){
 				[qna setMAnswer:[NSString stringWithFormat:@"%@%@\n",
-												qna.mAnswer,
-												line]];
+												 qna.mAnswer,
+												 line]];
 			};
-		} else if ([line isEqualToString:@"@end"]) {
+		} else if ([line isEqualToString:kEndMarker]) {
 			if (slide){
 				[self.slideArrayController insertObject:slide atArrangedObjectIndex:0];
 				slide = nil;
@@ -221,13 +232,15 @@ static const NSInteger kTextFieldAnswer = 11;
 	for (NSInteger i = arrOfSlides.count -1; i >= 0; --i) {
 		DHSlideModel *m = arrOfSlides[i];
 		if (m && m.code && m.header && m.comment) {
-			[slideShowString appendString:[NSString stringWithFormat:@"%@%@\n%@%@\n%@%@\n",
-																		 @"@code\n",
+			[slideShowString appendString:[NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@\n%@\n",
+																		 kCodeMarker,
 																		 [m.code stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]],
-																		 @"@header\n",
+																		kHeaderMarker,
 																		 [m.header stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]],
-																		 @"@comment\n",
-																		 [m.comment stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]]];
+																		 kCommentMarker,
+																		 [m.comment stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]],
+																		 kAddSlideMarker
+																		 ]];
 		}
 	}
 	return slideShowString;
@@ -259,10 +272,10 @@ static const NSInteger kTextFieldAnswer = 11;
 	NSString *answer = [qa.mAnswer stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 	return [NSString stringWithFormat:@"%@%@%@%@%@%@%@",
 					[self questionAnswerToString:index + 1],
-					question?@"@question\n":@"",
+					question?[NSString stringWithFormat:@"%@\n", kQuestionMarker]:@"",
 					question?:@"",
 					question?@"\n":@"",
-					answer?@"@answer\n":@"",
+					answer?[NSString stringWithFormat:@"%@\n", kAnswerMarker]:@"",
 					answer?:@"",
 					answer?@"\n":@""];
 }
@@ -272,7 +285,7 @@ static const NSInteger kTextFieldAnswer = 11;
  @return (NSString *) the end marker as a string
  */
 - (NSString *)endSlideString {
-	return @"@end\n";
+	return kEndMarker;
 }
 
 #pragma mark - TextField Control
