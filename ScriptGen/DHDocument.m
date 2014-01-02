@@ -52,19 +52,19 @@ static const NSInteger kTextFieldAnswer = 11;
 	
 	//NSString *slideShowStr = [self slideShowToString];
 	//data = [slideShowStr dataUsingEncoding:NSASCIIStringEncoding];
-
+	
 	NSAttributedString *mString = [[NSAttributedString alloc] initWithString:
 																 [NSString stringWithFormat:@"%@%@%@",
 																	[self slideShowToString],
 																	[self questionAnswerToString],
 																	[self endSlideString]]];
 	NSData *data = [mString dataFromRange:NSMakeRange(0, mString.length)
-						 documentAttributes:@{
-																	NSDocumentTypeDocumentAttribute:
-																		NSPlainTextDocumentType
-																	}
-													error:outError];
-
+										 documentAttributes:@{
+																					NSDocumentTypeDocumentAttribute:
+																						NSPlainTextDocumentType
+																					}
+																	error:outError];
+	
 	if (!data && outError) {
 		*outError = [NSError errorWithDomain:NSCocoaErrorDomain
 																		code:NSFileWriteUnknownError userInfo:nil];
@@ -147,7 +147,9 @@ static const NSInteger kTextFieldAnswer = 11;
 			slide = [DHSlideModel new];
 			slide.code = slide.header = slide.comment = @"";
 			handler = ^(NSString *line){
-				[slide setCode:[slide.code stringByAppendingString:line]];
+				[slide setCode:[NSString stringWithFormat:@"%@%@\n",
+												slide.code,
+												line]];
 			};
 		} else if ([line isEqualToString:@"@header"]) {
 			handler = ^(NSString *line){
@@ -155,7 +157,9 @@ static const NSInteger kTextFieldAnswer = 11;
 			};
 		} else if ([line isEqualToString:@"@comment"]) {
 			handler = ^(NSString *line){
-				[slide setComment:[slide.comment stringByAppendingString:line]];
+				[slide setComment:[NSString stringWithFormat:@"%@%@\n",
+													 slide.comment,
+													 line]];
 			};
 		} else if ([line isEqualToString:@"@question"]) {
 			if (qna) {
@@ -164,11 +168,15 @@ static const NSInteger kTextFieldAnswer = 11;
 			qna = [DHQuestionAnswerModel new];
 			qna.mQuestion = qna.mAnswer = @"";
 			handler = ^(NSString *line){
-				[qna setMQuestion:[qna.mQuestion stringByAppendingString:line]];
+				[qna setMQuestion:[NSString stringWithFormat:@"%@%@\n",
+												 qna.mQuestion,
+												 line]];
 			};
 		} else if ([line isEqualToString:@"@answer"]) {
 			handler = ^(NSString *line){
-				[qna setMAnswer:[qna.mAnswer stringByAppendingString:line]];
+				[qna setMAnswer:[NSString stringWithFormat:@"%@%@\n",
+												qna.mAnswer,
+												line]];
 			};
 		} else if ([line isEqualToString:@"@end"]) {
 			if (slide){
@@ -186,10 +194,6 @@ static const NSInteger kTextFieldAnswer = 11;
 			}
 		}
 	}
-	
-//	DHSlideModel *slide = [DHSlideModel new];
-//	[slide setCode:s];
-//	[[self slideArrayController] insertObject:slide atArrangedObjectIndex:0];
 }
 
 
@@ -199,7 +203,7 @@ static const NSInteger kTextFieldAnswer = 11;
  @param arr The array controller to be cleared
  */
 - (void) clearArrayController:(NSArrayController *)arr {
-		[arr removeObjectsAtArrangedObjectIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [[arr arrangedObjects] count])]];
+	[arr removeObjectsAtArrangedObjectIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [[arr arrangedObjects] count])]];
 }
 
 /**
