@@ -121,22 +121,87 @@ static const NSInteger kTextFieldAnswer = 11;
 	[panel setCanChooseFiles:YES];
 	[panel setAllowsMultipleSelection:NO];
 	[panel setAllowedFileTypes:[self allowedFileTypes]];
-	int userResponse = [panel runModal];
+	int userResponse = (int)[panel runModal];
 	if (userResponse == NSOKButton) {
-		//NSLog(@"%@", [panel URL]);
-		[self loadDocumentWithFile:[panel URL]];
+		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+			[self loadDocumentWithFile:[panel URL]];
+		});
 	}
 }
 
 - (void)loadDocumentWithFile:(NSURL *)url {
+	[self clearArrayController:self.slideArrayController];
+	[self clearArrayController:self.qaArrayController];
+	
 	NSString *s = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:nil];
-	DHSlideModel *slide = [DHSlideModel new];
-	[slide setCode:s];
-	[[self slideArrayController] insertObject:slide atArrangedObjectIndex:0];
+	
+	NSArray *fileArr = [s componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+	DHSlideModel *slide = nil;
+	DHQuestionAnswerModel *qna = nil;
+	__block void (^handler)(NSString *);
+	for (NSString *line in fileArr) {
+    if ([line isEqualToString:@"@code"]) {
+			if (slide){
+				[self.slideArrayController insertObject:slide atArrangedObjectIndex:0];
+			}
+			slide = [DHSlideModel new];
+			slide.code = slide.header = slide.comment = @"";
+			handler = ^(NSString *line){
+				[slide setCode:[slide.code stringByAppendingString:line]];
+			};
+		} else if ([line isEqualToString:@"@header"]) {
+			handler = ^(NSString *line){
+				[slide setHeader:[slide.header stringByAppendingString:line]];
+			};
+		} else if ([line isEqualToString:@"@comment"]) {
+			handler = ^(NSString *line){
+				[slide setComment:[slide.comment stringByAppendingString:line]];
+			};
+		} else if ([line isEqualToString:@"@question"]) {
+			if (qna) {
+				[self.qaArrayController insertObject:qna atArrangedObjectIndex:0];
+			}
+			qna = [DHQuestionAnswerModel new];
+			qna.mQuestion = qna.mAnswer = @"";
+			handler = ^(NSString *line){
+				[qna setMQuestion:[qna.mQuestion stringByAppendingString:line]];
+			};
+		} else if ([line isEqualToString:@"@answer"]) {
+			handler = ^(NSString *line){
+				[qna setMAnswer:[qna.mAnswer stringByAppendingString:line]];
+			};
+		} else if ([line isEqualToString:@"@end"]) {
+			if (slide){
+				[self.slideArrayController insertObject:slide atArrangedObjectIndex:0];
+				slide = nil;
+			}
+			if (qna) {
+				[self.qaArrayController insertObject:qna atArrangedObjectIndex:0];
+				qna = nil;
+			}
+			break;
+		} else {
+			if (handler) {
+				handler(line);
+			}
+		}
+	}
+	
+//	DHSlideModel *slide = [DHSlideModel new];
+//	[slide setCode:s];
+//	[[self slideArrayController] insertObject:slide atArrangedObjectIndex:0];
 }
 
 
 #pragma mark - SlideShow Accessor Methods
+/**
+ Removes all the objects from the Given Array controller.  Better to use this if the array controller is linked to bindings.
+ @param arr The array controller to be cleared
+ */
+- (void) clearArrayController:(NSArrayController *)arr {
+		[arr removeObjectsAtArrangedObjectIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [[arr arrangedObjects] count])]];
+}
+
 /**
  Retrieves the code/header/comment data from the array controller then returns a formated version
  @return (NSString *) The formated string
