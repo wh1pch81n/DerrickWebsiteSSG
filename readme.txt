@@ -13,7 +13,7 @@ User manual
 
 [Slide creation]
 
-If comments text field is selected and "tab" is pressed:
+If the "comments" text field is selected and "tab" is pressed:
 	1) New slide will be created
 	2) New slide will become currently selected slide
 	3) Copies previous slide's "code" text field
@@ -29,17 +29,18 @@ If the "-" button is pressed:
 
 [Opening and Saving]
 
-If you choose to save, a .txt file will we exported to the location of your choosing.  The file contains a script using a protocol that will be read by my personal website to generate a slide show via JavaScript.  The slide show is currently being used as a way to teach things such as programming languages.
+If you choose to save, a "*.txt" file will we exported to the location of your choosing.  The file contains a script using a protocol that will be read to generate a slide show.  My personal website has a tutorial section that can read this script and generate a slide show using JavaScript.  The slide show is currently being used as a way to teach things such as programming languages.
 
-You may also open the generated .txt file using this tool.  It will recreate the slide show. This tool expects a specific protocol of which I will refer to as "SSG protocol" (short for Slideshow Script Generator protocol).  SSG protocol should help you recreate the slide show.  If the text file you choose to open does not conform to SSG protocol the result is undefined.
+You may also open the generated "*.txt" file using this tool.  It will recreate the slide show. This tool expects a specific protocol of which I will refer to as "SSG protocol" (short for Slideshow Script Generator protocol).  SSG protocol should help you recreate the slide show.  If the text file you choose to open does not conform to SSG protocol the result is undefined.
 
-If the .txt file follos SSG protocol correctly, the current slide show will be deleted and filled with the slide show specified by the script in the .txt file.
+If the "*.txt" file follows SSG protocol correctly, the current slide show will be deleted and filled with the slide show specified by the script in the "*.txt" file.
 
 [Special Characters]
 ~ and ` are reserved characters in the "code" text field.
+
 If ~ is the first character of a line it will indicate that this line is to be highlighted by a SSG protocol compliant interpreter.
 
-Each ` in the begining of each line will indicate indentation.
+Each ` in the begining of each line will indicate that this line is to be indented by a SSG protocol compliant interpreter.
 
 [SSG protocol template]
 
