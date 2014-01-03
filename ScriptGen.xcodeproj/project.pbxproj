@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7F30F27D186DDF8500E0968C /* DHQuestionAnswerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F30F27C186DDF8500E0968C /* DHQuestionAnswerModel.m */; };
+		7F3C8D9818766DDA001D29B6 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3C8D9718766DDA001D29B6 /* readme.txt */; };
 		7F6CBEF0186A495E0063649D /* DHDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6CBEEE186A495E0063649D /* DHDocument.m */; };
 		7FCB33CF1866823200460C87 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FCB33CE1866823200460C87 /* Cocoa.framework */; };
 		7FCB33D91866823200460C87 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7FCB33D71866823200460C87 /* InfoPlist.strings */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		7F30F27B186DDF8500E0968C /* DHQuestionAnswerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHQuestionAnswerModel.h; sourceTree = "<group>"; };
 		7F30F27C186DDF8500E0968C /* DHQuestionAnswerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHQuestionAnswerModel.m; sourceTree = "<group>"; };
+		7F3C8D9718766DDA001D29B6 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		7F6CBEED186A495E0063649D /* DHDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHDocument.h; sourceTree = "<group>"; };
 		7F6CBEEE186A495E0063649D /* DHDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHDocument.m; sourceTree = "<group>"; };
 		7FCB33CB1866823200460C87 /* ScriptGen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScriptGen.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +87,7 @@
 		7FCB33C21866823200460C87 = {
 			isa = PBXGroup;
 			children = (
+				7F3C8D9718766DDA001D29B6 /* readme.txt */,
 				7FCB33D41866823200460C87 /* ScriptGen */,
 				7FCB33F21866823200460C87 /* ScriptGenTests */,
 				7FCB33CD1866823200460C87 /* Frameworks */,
@@ -246,6 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F3C8D9818766DDA001D29B6 /* readme.txt in Resources */,
 				7FCB33D91866823200460C87 /* InfoPlist.strings in Resources */,
 				7FCB33E71866823200460C87 /* Images.xcassets in Resources */,
 				7FCB33DF1866823200460C87 /* Credits.rtf in Resources */,
