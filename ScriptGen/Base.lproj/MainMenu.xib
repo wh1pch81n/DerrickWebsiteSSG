@@ -99,6 +99,11 @@
                                     <action selector="saveDocument:" target="-1" id="362"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Save As" keyEquivalent="S" id="YeY-Or-h7j">
+                                <connections>
+                                    <action selector="saveDocumentAs:" target="-1" id="jLP-df-tb5"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Revert to Saved" hidden="YES" enabled="NO" id="112">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
@@ -122,7 +127,7 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Edit" hidden="YES" enabled="NO" id="217">
+                <menuItem title="Edit" id="217">
                     <menu key="submenu" title="Edit" id="205">
                         <items>
                             <menuItem title="Undo" enabled="NO" keyEquivalent="z" id="207">
@@ -173,7 +178,7 @@
                             <menuItem isSeparatorItem="YES" id="214">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Find" enabled="NO" id="218">
+                            <menuItem title="Find" hidden="YES" enabled="NO" id="218">
                                 <menu key="submenu" title="Find" id="220">
                                     <items>
                                         <menuItem title="Find…" tag="1" enabled="NO" keyEquivalent="f" id="209">
@@ -211,7 +216,7 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Spelling and Grammar" enabled="NO" id="216">
+                            <menuItem title="Spelling and Grammar" hidden="YES" enabled="NO" id="216">
                                 <menu key="submenu" title="Spelling and Grammar" id="200">
                                     <items>
                                         <menuItem title="Show Spelling and Grammar" enabled="NO" keyEquivalent=":" id="204">
@@ -244,7 +249,7 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Substitutions" enabled="NO" id="348">
+                            <menuItem title="Substitutions" hidden="YES" enabled="NO" id="348">
                                 <menu key="submenu" title="Substitutions" id="349">
                                     <items>
                                         <menuItem title="Show Substitutions" enabled="NO" id="457">
@@ -285,7 +290,7 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Transformations" enabled="NO" id="450">
+                            <menuItem title="Transformations" hidden="YES" enabled="NO" id="450">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Transformations" id="451">
                                     <items>
