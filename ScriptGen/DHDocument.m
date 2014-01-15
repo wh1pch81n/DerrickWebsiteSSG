@@ -25,6 +25,7 @@ NSString *const kEndMarker = @"@end";
 
 @interface DHDocument ()
 - (IBAction)pressedOpenMenuOption:(id)sender;
+@property (weak) IBOutlet NSTabView *tabView;
 @end
 
 @implementation DHDocument
@@ -328,4 +329,11 @@ NSString *const kEndMarker = @"@end";
 	return result;
 }
 
+- (IBAction)tappedSlideTab:(id)sender {
+	[[self tabView] selectTabViewItemAtIndex:0];
+}
+
+- (IBAction)tappedQnATab:(id)sender {
+	[[self tabView] selectTabViewItemAtIndex:1];
+}
 @end
