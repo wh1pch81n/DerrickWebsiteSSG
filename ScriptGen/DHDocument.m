@@ -329,11 +329,48 @@ NSString *const kEndMarker = @"@end";
 	return result;
 }
 
+static const NSInteger kTabSlide = 0;
+static const NSInteger kTabQnA = 1;
+
 - (IBAction)tappedSlideTab:(id)sender {
-	[[self tabView] selectTabViewItemAtIndex:0];
+	[[self tabView] selectTabViewItemAtIndex:kTabSlide];
 }
 
 - (IBAction)tappedQnATab:(id)sender {
-	[[self tabView] selectTabViewItemAtIndex:1];
+	[[self tabView] selectTabViewItemAtIndex:kTabQnA];
+}
+
+- (IBAction)tappedInsertSlideButton:(id)sender {
+	[self getTabViewIndexThenPerformBlock:^(NSInteger index) {
+		switch(index) {
+			case kTabSlide:
+				NSLog(@"slide add");
+				[[self slideArrayController] insert:sender];
+				break;
+			case kTabQnA:
+				NSLog(@"Q&A add");
+				[[self qaArrayController] insert:sender];
+		}
+	}];
+}
+
+- (IBAction)tappedRemoveSlideButton:(id)sender {
+	[self getTabViewIndexThenPerformBlock:^(NSInteger index) {
+		switch(index) {
+			case kTabSlide:
+				NSLog(@"slide Remove");
+				[self.slideArrayController remove:sender];
+				break;
+			case kTabQnA:
+				NSLog(@"Q&A Remove");
+				[self.qaArrayController remove:sender];
+		}
+	}];
+}
+
+- (void)getTabViewIndexThenPerformBlock:(void(^)(NSInteger))block {
+	if (block) {
+		block([self.tabView indexOfTabViewItem:self.tabView.selectedTabViewItem]);
+	}
 }
 @end
