@@ -1033,25 +1033,9 @@
                 <outlet property="qaArrayController" destination="IMA-io-6Vz" id="ZHU-Ho-UJL"/>
                 <outlet property="slideArrayController" destination="x08-tj-3hP" id="kFb-wj-GP7"/>
                 <outlet property="tabView" destination="1jL-Ma-gSj" id="Og4-5E-yIT"/>
-                <outlet property="window" destination="beM-gU-3kQ" id="qoq-DO-ctd"/>
             </connections>
         </customObject>
         <arrayController objectClassName="DHSlideModel" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="x08-tj-3hP" userLabel="Array Controller - slideshow"/>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" wantsToBeColor="NO" animationBehavior="default" id="beM-gU-3kQ">
-            <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="780" y="413" width="500" height="365"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
-            <value key="minSize" type="size" width="500" height="365"/>
-            <value key="maxSize" type="size" width="500" height="365"/>
-            <view key="contentView" id="eu3-7R-bb0">
-                <rect key="frame" x="0.0" y="0.0" width="500" height="365"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </view>
-            <connections>
-                <outlet property="delegate" destination="k9N-zo-lnk" id="NiI-Ei-VQq"/>
-            </connections>
-        </window>
         <arrayController objectClassName="DHQuestionAnswerModel" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="IMA-io-6Vz" userLabel="Array Controller - Q&amp;A"/>
     </objects>
     <resources>

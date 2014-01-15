@@ -14,6 +14,8 @@ static const NSInteger kTextFieldCode = 23;
 static const NSInteger kTextFieldComment = 24;
 static const NSInteger kTextFieldQuestion = 10;
 static const NSInteger kTextFieldAnswer = 11;
+static const NSInteger kTabSlide = 0;
+static const NSInteger kTabQnA = 1;
 
 NSString *const kCodeMarker = @"@code";
 NSString *const kHeaderMarker = @"@header";
@@ -329,9 +331,6 @@ NSString *const kEndMarker = @"@end";
 	return result;
 }
 
-static const NSInteger kTabSlide = 0;
-static const NSInteger kTabQnA = 1;
-
 - (IBAction)tappedSlideTab:(id)sender {
 	[[self tabView] selectTabViewItemAtIndex:kTabSlide];
 }
@@ -373,4 +372,5 @@ static const NSInteger kTabQnA = 1;
 		block([self.tabView indexOfTabViewItem:self.tabView.selectedTabViewItem]);
 	}
 }
+
 @end
