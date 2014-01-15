@@ -343,11 +343,9 @@ NSString *const kEndMarker = @"@end";
 	[self getTabViewIndexThenPerformBlock:^(NSInteger index) {
 		switch(index) {
 			case kTabSlide:
-				NSLog(@"slide add");
 				[[self slideArrayController] insert:sender];
 				break;
 			case kTabQnA:
-				NSLog(@"Q&A add");
 				[[self qaArrayController] insert:sender];
 		}
 	}];
@@ -357,11 +355,9 @@ NSString *const kEndMarker = @"@end";
 	[self getTabViewIndexThenPerformBlock:^(NSInteger index) {
 		switch(index) {
 			case kTabSlide:
-				NSLog(@"slide Remove");
 				[self.slideArrayController remove:sender];
 				break;
 			case kTabQnA:
-				NSLog(@"Q&A Remove");
 				[self.qaArrayController remove:sender];
 		}
 	}];
