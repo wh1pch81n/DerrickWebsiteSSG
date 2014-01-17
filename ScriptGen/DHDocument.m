@@ -14,6 +14,8 @@ static const NSInteger kTextFieldCode = 23;
 static const NSInteger kTextFieldComment = 24;
 static const NSInteger kTextFieldQuestion = 10;
 static const NSInteger kTextFieldAnswer = 11;
+static const NSInteger kTabSlide = 0;
+static const NSInteger kTabQnA = 1;
 
 NSString *const kCodeMarker = @"@code";
 NSString *const kHeaderMarker = @"@header";
@@ -25,6 +27,7 @@ NSString *const kEndMarker = @"@end";
 
 @interface DHDocument ()
 - (IBAction)pressedOpenMenuOption:(id)sender;
+@property (weak) IBOutlet NSTabView *tabView;
 @end
 
 @implementation DHDocument
@@ -326,6 +329,44 @@ NSString *const kEndMarker = @"@end";
 			break;
 	}
 	return result;
+}
+
+- (IBAction)tappedSlideTab:(id)sender {
+	[[self tabView] selectTabViewItemAtIndex:kTabSlide];
+}
+
+- (IBAction)tappedQnATab:(id)sender {
+	[[self tabView] selectTabViewItemAtIndex:kTabQnA];
+}
+
+- (IBAction)tappedInsertSlideButton:(id)sender {
+	[self getTabViewIndexThenPerformBlock:^(NSInteger index) {
+		switch(index) {
+			case kTabSlide:
+				[[self slideArrayController] insert:sender];
+				break;
+			case kTabQnA:
+				[[self qaArrayController] insert:sender];
+		}
+	}];
+}
+
+- (IBAction)tappedRemoveSlideButton:(id)sender {
+	[self getTabViewIndexThenPerformBlock:^(NSInteger index) {
+		switch(index) {
+			case kTabSlide:
+				[self.slideArrayController remove:sender];
+				break;
+			case kTabQnA:
+				[self.qaArrayController remove:sender];
+		}
+	}];
+}
+
+- (void)getTabViewIndexThenPerformBlock:(void(^)(NSInteger))block {
+	if (block) {
+		block([self.tabView indexOfTabViewItem:self.tabView.selectedTabViewItem]);
+	}
 }
 
 @end
