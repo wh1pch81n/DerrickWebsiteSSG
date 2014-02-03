@@ -829,23 +829,6 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" tag="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ith-Ci-vQ2">
-                                            <rect key="frame" x="20" y="436" width="326" height="92"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="UuD-zZ-8gL">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <connections>
-                                                <binding destination="IMA-io-6Vz" name="value" keyPath="selection.mQuestion" id="rUm-S5-q8P">
-                                                    <dictionary key="options">
-                                                        <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                    </dictionary>
-                                                </binding>
-                                                <outlet property="delegate" destination="k9N-zo-lnk" id="ZLb-EH-7dy"/>
-                                            </connections>
-                                        </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGP-cE-kqc">
                                             <rect key="frame" x="18" y="411" width="50" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -955,6 +938,38 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                         </scrollView>
+                                        <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0i-lw-LJq">
+                                            <rect key="frame" x="20" y="436" width="655" height="92"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <clipView key="contentView" ambiguous="YES" misplaced="YES" id="uBR-4s-aRD">
+                                                <rect key="frame" x="1" y="1" width="638" height="90"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textView ambiguous="YES" importsGraphics="NO" richText="NO" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" id="ZOq-gX-Bt3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="638" height="90"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <size key="minSize" width="638" height="90"/>
+                                                        <size key="maxSize" width="638" height="10000000"/>
+                                                        <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <size key="minSize" width="638" height="90"/>
+                                                        <size key="maxSize" width="638" height="10000000"/>
+                                                        <connections>
+                                                            <binding destination="IMA-io-6Vz" name="value" keyPath="selection.mQuestion" id="JhW-v2-0NG"/>
+                                                        </connections>
+                                                    </textView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </clipView>
+                                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="B81-gR-lhh">
+                                                <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                            <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="fTI-bd-Szq">
+                                                <rect key="frame" x="639" y="1" width="15" height="90"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                        </scrollView>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -998,7 +1013,12 @@
                 <outlet property="delegate" destination="k9N-zo-lnk" id="QTS-aW-izv"/>
             </connections>
         </window>
-        <customObject id="494" customClass="DHAppDelegate"/>
+        <customObject id="494" customClass="DHAppDelegate">
+            <connections>
+                <outlet property="answerTextView" destination="9Wg-Ul-nUc" id="twf-3a-p6C"/>
+                <outlet property="questionTextView" destination="ZOq-gX-Bt3" id="OC8-Yn-dE9"/>
+            </connections>
+        </customObject>
         <customObject id="420" customClass="NSFontManager"/>
         <customObject id="k9N-zo-lnk" customClass="DHDocument">
             <connections>
@@ -1009,6 +1029,7 @@
         </customObject>
         <arrayController objectClassName="DHSlideModel" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="x08-tj-3hP" userLabel="Array Controller - slideshow"/>
         <arrayController objectClassName="DHQuestionAnswerModel" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="IMA-io-6Vz" userLabel="Array Controller - Q&amp;A"/>
+        <userDefaultsController representsSharedInstance="YES" id="ACQ-fa-heB"/>
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
