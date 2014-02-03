@@ -331,6 +331,16 @@ NSString *const kEndMarker = @"@end";
 	return result;
 }
 
+- (BOOL)textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
+	if (commandSelector == @selector(insertTab:)) {
+		[[textView window] selectNextKeyView:nil];
+		return YES;
+	}
+	return NO;
+}
+
+#pragma mark - TabViews
+
 - (IBAction)tappedSlideTab:(id)sender {
 	[[self tabView] selectTabViewItemAtIndex:kTabSlide];
 }

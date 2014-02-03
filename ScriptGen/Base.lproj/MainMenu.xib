@@ -668,7 +668,7 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Tab" identifier="1" id="ei9-sh-GS7">
-                                <view key="view" id="2eG-OF-uUu">
+                                <view key="view" ambiguous="YES" id="2eG-OF-uUu">
                                     <rect key="frame" x="0.0" y="0.0" width="695" height="573"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -816,7 +816,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="View" identifier="2" id="zFH-IO-8cX">
-                                <view key="view" ambiguous="YES" id="clc-jz-gWU">
+                                <view key="view" id="clc-jz-gWU">
                                     <rect key="frame" x="0.0" y="0.0" width="695" height="573"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -918,12 +918,13 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <size key="minSize" width="638" height="237"/>
-                                                        <size key="maxSize" width="638" height="10000000"/>
+                                                        <size key="maxSize" width="655" height="10000000"/>
                                                         <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         <size key="minSize" width="638" height="237"/>
-                                                        <size key="maxSize" width="638" height="10000000"/>
+                                                        <size key="maxSize" width="655" height="10000000"/>
                                                         <connections>
                                                             <binding destination="IMA-io-6Vz" name="value" keyPath="selection.mAnswer" id="wbt-R6-M1z"/>
+                                                            <outlet property="delegate" destination="k9N-zo-lnk" id="rqK-AF-htF"/>
                                                         </connections>
                                                     </textView>
                                                 </subviews>
@@ -950,12 +951,13 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <size key="minSize" width="638" height="90"/>
-                                                        <size key="maxSize" width="638" height="10000000"/>
+                                                        <size key="maxSize" width="655" height="10000000"/>
                                                         <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         <size key="minSize" width="638" height="90"/>
-                                                        <size key="maxSize" width="638" height="10000000"/>
+                                                        <size key="maxSize" width="655" height="10000000"/>
                                                         <connections>
                                                             <binding destination="IMA-io-6Vz" name="value" keyPath="selection.mQuestion" id="JhW-v2-0NG"/>
+                                                            <outlet property="delegate" destination="k9N-zo-lnk" id="kLg-qq-mIS"/>
                                                         </connections>
                                                     </textView>
                                                 </subviews>
@@ -1016,7 +1018,7 @@
         <customObject id="494" customClass="DHAppDelegate">
             <connections>
                 <outlet property="answerTextView" destination="9Wg-Ul-nUc" id="twf-3a-p6C"/>
-                <outlet property="questionTextView" destination="ZOq-gX-Bt3" id="OC8-Yn-dE9"/>
+                <outlet property="questionTextView" destination="ZOq-gX-Bt3" id="URV-eC-PJx"/>
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>

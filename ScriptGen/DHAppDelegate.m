@@ -13,6 +13,7 @@ NSInteger const kMonoSpacedFontSize12 = 12;
 
 @interface DHAppDelegate ()
 
+//Normally weak would be better, but NSTextView does not support it
 @property (unsafe_unretained) IBOutlet NSTextView *questionTextView;
 @property (unsafe_unretained) IBOutlet NSTextView *answerTextView;
 

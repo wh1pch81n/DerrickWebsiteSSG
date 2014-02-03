@@ -16,7 +16,7 @@ extern NSString *const kQuestionMarker;
 extern NSString *const kAnswerMarker;
 extern NSString *const kEndMarker;
 
-@interface DHDocument : NSDocument <NSControlTextEditingDelegate>
+@interface DHDocument : NSDocument <NSControlTextEditingDelegate, NSTextViewDelegate>
 @property (weak) IBOutlet NSArrayController *slideArrayController;
 @property (weak) IBOutlet NSArrayController *qaArrayController;
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector;
