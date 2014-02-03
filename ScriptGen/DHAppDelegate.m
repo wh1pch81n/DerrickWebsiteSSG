@@ -25,12 +25,19 @@ NSInteger const kMonoSpacedFontSize12 = 12;
 {
 	// Insert code here to initialize your application
 	NSFont *font = [NSFont fontWithName:kMonoSpacedFontName size:kMonoSpacedFontSize12];
-	[self.questionTextView setFont:font];
-	[self.questionTextView setAutomaticDashSubstitutionEnabled:NO];
-	[self.answerTextView setFont:font];
-	[self.answerTextView setAutomaticDashSubstitutionEnabled:NO];
-	//TODO: get rid of that underline red thing
+	[self initializeFontAndSpellCheckOnTextView:self.questionTextView font:font isSpellcheckEnabled:NO];
+	[self initializeFontAndSpellCheckOnTextView:self.answerTextView font:font isSpellcheckEnabled:NO];
+}
 
+/**
+ Sets font and spellcheck properties
+ */
+- (void)initializeFontAndSpellCheckOnTextView:(NSTextView *)textView font:(NSFont *)font isSpellcheckEnabled:(BOOL)spellcheck {
+	[textView setFont:font];
+	[textView setAutomaticDashSubstitutionEnabled:spellcheck];
+	[textView setGrammarCheckingEnabled:spellcheck];
+	[textView setAutomaticSpellingCorrectionEnabled:spellcheck];
+	[textView setContinuousSpellCheckingEnabled:spellcheck];
 }
 
 
