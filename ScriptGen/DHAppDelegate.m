@@ -16,6 +16,7 @@ NSInteger const kMonoSpacedFontSize12 = 12;
 //Normally weak would be better, but NSTextView does not support it
 @property (unsafe_unretained) IBOutlet NSTextView *questionTextView;
 @property (unsafe_unretained) IBOutlet NSTextView *answerTextView;
+@property (unsafe_unretained) IBOutlet NSTextView *codeTextView;
 
 @end
 
@@ -27,6 +28,7 @@ NSInteger const kMonoSpacedFontSize12 = 12;
 	NSFont *font = [NSFont fontWithName:kMonoSpacedFontName size:kMonoSpacedFontSize12];
 	[self initializeFontAndSpellCheckOnTextView:self.questionTextView font:font isSpellcheckEnabled:NO];
 	[self initializeFontAndSpellCheckOnTextView:self.answerTextView font:font isSpellcheckEnabled:NO];
+	[self initializeFontAndSpellCheckOnTextView:self.codeTextView font:font isSpellcheckEnabled:NO];
 }
 
 /**
