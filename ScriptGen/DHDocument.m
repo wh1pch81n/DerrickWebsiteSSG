@@ -296,45 +296,7 @@ NSString *const kEndMarker = @"@end";
 	return kEndMarker;
 }
 
-#pragma mark - TextField Control
-- (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
-	BOOL result = NO;
-	
-	switch ([control tag]) {
-		case kTextFieldCode:
-		case kTextFieldQuestion:
-			if (commandSelector == @selector(insertNewline:)) {
-				[textView insertText:@"\n"];
-				result = YES;
-			}
-			break;
-		case kTextFieldComment:
-			if (commandSelector == @selector(insertNewline:)) {
-				[textView insertText:@"\n"];
-				result = YES;
-			} else if (commandSelector == @selector(insertTab:)) {
-				//Put previously selected slide's code in new slide
-				NSInteger index = self.slideArrayController.selectionIndex;
-				NSString *prevSlideCode = [(DHSlideModel *)self.slideArrayController.arrangedObjects[index] code];
-				DHSlideModel *newSlide = [DHSlideModel new];
-				[newSlide setCode:prevSlideCode];
-				[self.slideArrayController insertObject:newSlide
-													atArrangedObjectIndex:index];
-				result = NO;
-			}
-			break;
-		case kTextFieldAnswer:
-			if (commandSelector == @selector(insertNewline:)) {
-				[textView insertText:@"\n"];
-				result = YES;
-			} else if (commandSelector == @selector(insertTab:)) {
-				[self.qaArrayController insert:[DHQuestionAnswerModel new]];
-				result = NO;
-			}
-			break;
-	}
-	return result;
-}
+#pragma mark - textView delegate
 
 - (BOOL)textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
 	if (commandSelector == @selector(insertTab:)) {

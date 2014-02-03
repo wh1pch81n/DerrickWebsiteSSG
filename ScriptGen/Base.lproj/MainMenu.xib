@@ -788,7 +788,7 @@
                                                     <textView identifier="codeTextViewId" ambiguous="YES" importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="tdz-Yh-yKO">
                                                         <rect key="frame" x="0.0" y="0.0" width="378" height="507"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" red="1" green="0.94302110220000002" blue="0.58003699900000005" alpha="1" colorSpace="calibratedRGB"/>
                                                         <size key="minSize" width="378" height="507"/>
                                                         <size key="maxSize" width="463" height="10000000"/>
                                                         <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -804,7 +804,7 @@
                                                         </connections>
                                                     </textView>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </clipView>
                                             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="beF-Se-p1M">
                                                 <rect key="frame" x="-100" y="-100" width="87" height="18"/>

@@ -21,8 +21,8 @@ extern NSString *const kCommentTextViewId;
 extern NSString *const kQuestionTextViewId;
 extern NSString *const kAnswerTextViewId;
 
-@interface DHDocument : NSDocument <NSControlTextEditingDelegate, NSTextViewDelegate>
+@interface DHDocument : NSDocument <NSTextViewDelegate>
 @property (weak) IBOutlet NSArrayController *slideArrayController;
 @property (weak) IBOutlet NSArrayController *qaArrayController;
-- (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector;
+
 @end
