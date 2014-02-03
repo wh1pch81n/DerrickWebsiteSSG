@@ -17,6 +17,11 @@ static const NSInteger kTextFieldAnswer = 11;
 static const NSInteger kTabSlide = 0;
 static const NSInteger kTabQnA = 1;
 
+NSString *const kCodeTextViewId = @"codeTextViewId";
+NSString *const kCommentTextViewId = @"commentTextViewId";
+NSString *const kQuestionTextViewId = @"questionTextViewId";
+NSString *const kAnswerTextViewId = @"answerTextViewId";
+
 NSString *const kCodeMarker = @"@code";
 NSString *const kHeaderMarker = @"@header";
 NSString *const kCommentMarker = @"@comment";
@@ -291,45 +296,34 @@ NSString *const kEndMarker = @"@end";
 	return kEndMarker;
 }
 
-#pragma mark - TextField Control
-- (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
-	BOOL result = NO;
-	
-	switch ([control tag]) {
-		case kTextFieldCode:
-		case kTextFieldQuestion:
-			if (commandSelector == @selector(insertNewline:)) {
-				[textView insertText:@"\n"];
-				result = YES;
-			}
-			break;
-		case kTextFieldComment:
-			if (commandSelector == @selector(insertNewline:)) {
-				[textView insertText:@"\n"];
-				result = YES;
-			} else if (commandSelector == @selector(insertTab:)) {
-				//Put previously selected slide's code in new slide
-				NSInteger index = self.slideArrayController.selectionIndex;
-				NSString *prevSlideCode = [(DHSlideModel *)self.slideArrayController.arrangedObjects[index] code];
-				DHSlideModel *newSlide = [DHSlideModel new];
-				[newSlide setCode:prevSlideCode];
-				[self.slideArrayController insertObject:newSlide
-													atArrangedObjectIndex:index];
-				result = NO;
-			}
-			break;
-		case kTextFieldAnswer:
-			if (commandSelector == @selector(insertNewline:)) {
-				[textView insertText:@"\n"];
-				result = YES;
-			} else if (commandSelector == @selector(insertTab:)) {
-				[self.qaArrayController insert:[DHQuestionAnswerModel new]];
-				result = NO;
-			}
-			break;
+#pragma mark - textView delegate
+
+- (BOOL)textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
+	if (commandSelector == @selector(insertTab:)) {
+		if ([textView.identifier isEqualToString:kCommentTextViewId]) {
+			[[textView window] selectNextKeyView:nil];
+			[[textView window] selectNextKeyView:nil];
+			//Put previously selected slide's code in new slide
+			NSInteger index = self.slideArrayController.selectionIndex;
+			NSString *prevSlideCode = [(DHSlideModel *)self.slideArrayController.arrangedObjects[index] code];
+			DHSlideModel *newSlide = [DHSlideModel new];
+			[newSlide setCode:prevSlideCode];
+			[self.slideArrayController insertObject:newSlide
+												atArrangedObjectIndex:index];
+		} else if ([textView.identifier isEqualToString:kAnswerTextViewId]) {
+			[textView.window selectPreviousKeyView:nil]; //get to questionTextView
+			[self.qaArrayController insert:[DHQuestionAnswerModel new]];
+		} else {
+			[[textView window] selectNextKeyView:nil];
+		}
+		return YES;
+	} else if (commandSelector == @selector(insertBacktab:)) {
+		[textView.window selectPreviousKeyView:nil];
 	}
-	return result;
+	return NO;
 }
+
+#pragma mark - TabViews
 
 - (IBAction)tappedSlideTab:(id)sender {
 	[[self tabView] selectTabViewItemAtIndex:kTabSlide];
