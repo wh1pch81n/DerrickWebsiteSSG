@@ -335,6 +335,8 @@ NSString *const kEndMarker = @"@end";
 	if (commandSelector == @selector(insertTab:)) {
 		[[textView window] selectNextKeyView:nil];
 		return YES;
+	} else if (commandSelector == @selector(insertBacktab:)) {
+		[textView.window selectPreviousKeyView:nil];
 	}
 	return NO;
 }
