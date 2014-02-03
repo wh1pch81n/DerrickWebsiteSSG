@@ -338,7 +338,17 @@ NSString *const kEndMarker = @"@end";
 
 - (BOOL)textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
 	if (commandSelector == @selector(insertTab:)) {
-		if ([textView.identifier isEqualToString:@"answerTextViewId"]) {
+		if ([textView.identifier isEqualToString:kCommentTextViewId]) {
+			[[textView window] selectNextKeyView:nil];
+			[[textView window] selectNextKeyView:nil];
+			//Put previously selected slide's code in new slide
+			NSInteger index = self.slideArrayController.selectionIndex;
+			NSString *prevSlideCode = [(DHSlideModel *)self.slideArrayController.arrangedObjects[index] code];
+			DHSlideModel *newSlide = [DHSlideModel new];
+			[newSlide setCode:prevSlideCode];
+			[self.slideArrayController insertObject:newSlide
+												atArrangedObjectIndex:index];
+		} else if ([textView.identifier isEqualToString:kAnswerTextViewId]) {
 			[textView.window selectPreviousKeyView:nil]; //get to questionTextView
 			[self.qaArrayController insert:[DHQuestionAnswerModel new]];
 		} else {

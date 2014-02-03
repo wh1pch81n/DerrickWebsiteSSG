@@ -17,6 +17,7 @@ NSInteger const kMonoSpacedFontSize12 = 12;
 @property (unsafe_unretained) IBOutlet NSTextView *questionTextView;
 @property (unsafe_unretained) IBOutlet NSTextView *answerTextView;
 @property (unsafe_unretained) IBOutlet NSTextView *codeTextView;
+@property (unsafe_unretained) IBOutlet NSTextView *commentTextView;
 
 @end
 
@@ -29,6 +30,7 @@ NSInteger const kMonoSpacedFontSize12 = 12;
 	[self initializeFontAndSpellCheckOnTextView:self.questionTextView font:font isSpellcheckEnabled:NO];
 	[self initializeFontAndSpellCheckOnTextView:self.answerTextView font:font isSpellcheckEnabled:NO];
 	[self initializeFontAndSpellCheckOnTextView:self.codeTextView font:font isSpellcheckEnabled:NO];
+	[self initializeFontAndSpellCheckOnTextView:self.commentTextView font:font isSpellcheckEnabled:NO];
 }
 
 /**

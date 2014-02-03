@@ -672,23 +672,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="695" height="573"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" tag="23" translatesAutoresizingMaskIntoConstraints="NO" id="0DF-qO-2yn">
-                                            <rect key="frame" x="20" y="20" width="147" height="509"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ShL-NY-aHL">
-                                                <font key="font" size="12" name="Menlo-Regular"/>
-                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" red="1" green="0.94302110221771696" blue="0.58003699896126193" alpha="1" colorSpace="calibratedRGB"/>
-                                            </textFieldCell>
-                                            <connections>
-                                                <binding destination="x08-tj-3hP" name="value" keyPath="selection.code" id="gYu-F3-mK1">
-                                                    <dictionary key="options">
-                                                        <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                    </dictionary>
-                                                </binding>
-                                                <outlet property="delegate" destination="k9N-zo-lnk" id="aYv-Fv-fka"/>
-                                            </connections>
-                                        </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LWf-8v-q63">
                                             <rect key="frame" x="18" y="537" width="37" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -751,23 +734,6 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </tableHeaderView>
                                         </scrollView>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" tag="24" translatesAutoresizingMaskIntoConstraints="NO" id="xPO-sC-LxM">
-                                            <rect key="frame" x="423" y="212" width="87" height="267"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="uyA-P6-zbU">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <connections>
-                                                <binding destination="x08-tj-3hP" name="value" keyPath="selection.comment" id="d2P-YW-cHl">
-                                                    <dictionary key="options">
-                                                        <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                    </dictionary>
-                                                </binding>
-                                                <outlet property="delegate" destination="k9N-zo-lnk" id="y57-EI-ZwF"/>
-                                            </connections>
-                                        </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MfB-4V-IUA">
                                             <rect key="frame" x="421" y="485" width="66" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -813,20 +779,20 @@
                                             </textFieldCell>
                                         </textField>
                                         <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdo-Dd-APa">
-                                            <rect key="frame" x="175" y="20" width="240" height="509"/>
+                                            <rect key="frame" x="20" y="20" width="395" height="509"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <clipView key="contentView" ambiguous="YES" misplaced="YES" id="gBW-0Q-QpT">
-                                                <rect key="frame" x="1" y="1" width="223" height="507"/>
+                                                <rect key="frame" x="1" y="1" width="378" height="507"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textView identifier="codeTextViewId" ambiguous="YES" importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="tdz-Yh-yKO">
-                                                        <rect key="frame" x="0.0" y="0.0" width="223" height="507"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="378" height="507"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <size key="minSize" width="223" height="507"/>
+                                                        <size key="minSize" width="378" height="507"/>
                                                         <size key="maxSize" width="463" height="10000000"/>
                                                         <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <size key="minSize" width="223" height="507"/>
+                                                        <size key="minSize" width="378" height="507"/>
                                                         <size key="maxSize" width="463" height="10000000"/>
                                                         <connections>
                                                             <binding destination="x08-tj-3hP" name="value" keyPath="selection.code" id="hib-eD-kAI">
@@ -845,26 +811,34 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                             <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="9OZ-PF-NMh">
-                                                <rect key="frame" x="224" y="1" width="15" height="507"/>
+                                                <rect key="frame" x="379" y="1" width="15" height="507"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                         </scrollView>
                                         <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tX0-ou-JRY">
-                                            <rect key="frame" x="518" y="212" width="157" height="267"/>
+                                            <rect key="frame" x="423" y="212" width="240" height="267"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <clipView key="contentView" ambiguous="YES" misplaced="YES" id="Sc4-4K-geu">
-                                                <rect key="frame" x="1" y="1" width="140" height="265"/>
+                                                <rect key="frame" x="1" y="1" width="223" height="265"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textView ambiguous="YES" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="MaI-Jt-ien">
-                                                        <rect key="frame" x="0.0" y="0.0" width="140" height="265"/>
+                                                    <textView identifier="commentTextViewId" ambiguous="YES" importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="MaI-Jt-ien">
+                                                        <rect key="frame" x="0.0" y="0.0" width="223" height="265"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <size key="minSize" width="140" height="265"/>
+                                                        <size key="minSize" width="223" height="265"/>
                                                         <size key="maxSize" width="463" height="10000000"/>
                                                         <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <size key="minSize" width="140" height="265"/>
+                                                        <size key="minSize" width="223" height="265"/>
                                                         <size key="maxSize" width="463" height="10000000"/>
+                                                        <connections>
+                                                            <binding destination="x08-tj-3hP" name="value" keyPath="selection.comment" id="UtG-8k-GZR">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                                </dictionary>
+                                                            </binding>
+                                                            <outlet property="delegate" destination="k9N-zo-lnk" id="B5h-ma-0cc"/>
+                                                        </connections>
                                                     </textView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -874,7 +848,7 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                             <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="nTI-ub-JWi">
-                                                <rect key="frame" x="141" y="1" width="15" height="265"/>
+                                                <rect key="frame" x="224" y="1" width="15" height="265"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                         </scrollView>
@@ -1093,6 +1067,7 @@
             <connections>
                 <outlet property="answerTextView" destination="9Wg-Ul-nUc" id="twf-3a-p6C"/>
                 <outlet property="codeTextView" destination="tdz-Yh-yKO" id="GNe-lN-iur"/>
+                <outlet property="commentTextView" destination="MaI-Jt-ien" id="eSo-5y-gpC"/>
                 <outlet property="questionTextView" destination="ZOq-gX-Bt3" id="URV-eC-PJx"/>
             </connections>
         </customObject>
