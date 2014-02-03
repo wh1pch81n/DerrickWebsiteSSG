@@ -334,6 +334,10 @@ NSString *const kEndMarker = @"@end";
 - (BOOL)textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
 	if (commandSelector == @selector(insertTab:)) {
 		[[textView window] selectNextKeyView:nil];
+		if ([textView.identifier isEqualToString:@"answerTextViewId"]) {
+			[textView.window selectNextKeyView:nil]; //skip past the tableview to get to questionTextView
+			[self.qaArrayController insert:[DHQuestionAnswerModel new]];
+		}
 		return YES;
 	} else if (commandSelector == @selector(insertBacktab:)) {
 		[textView.window selectPreviousKeyView:nil];
