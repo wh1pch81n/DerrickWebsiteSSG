@@ -922,7 +922,11 @@
                                                         <size key="minSize" width="638" height="237"/>
                                                         <size key="maxSize" width="655" height="10000000"/>
                                                         <connections>
-                                                            <binding destination="IMA-io-6Vz" name="value" keyPath="selection.mAnswer" id="wbt-R6-M1z"/>
+                                                            <binding destination="IMA-io-6Vz" name="value" keyPath="selection.mAnswer" id="UPn-RH-omY">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                                </dictionary>
+                                                            </binding>
                                                             <outlet property="delegate" destination="k9N-zo-lnk" id="rqK-AF-htF"/>
                                                         </connections>
                                                     </textView>
@@ -955,7 +959,11 @@
                                                         <size key="minSize" width="638" height="90"/>
                                                         <size key="maxSize" width="655" height="10000000"/>
                                                         <connections>
-                                                            <binding destination="IMA-io-6Vz" name="value" keyPath="selection.mQuestion" id="JhW-v2-0NG"/>
+                                                            <binding destination="IMA-io-6Vz" name="value" keyPath="selection.mQuestion" id="rPZ-re-hFL">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                                </dictionary>
+                                                            </binding>
                                                             <outlet property="delegate" destination="k9N-zo-lnk" id="kLg-qq-mIS"/>
                                                         </connections>
                                                     </textView>

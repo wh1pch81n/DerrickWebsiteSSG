@@ -17,6 +17,11 @@ static const NSInteger kTextFieldAnswer = 11;
 static const NSInteger kTabSlide = 0;
 static const NSInteger kTabQnA = 1;
 
+NSString *const kCodeTextViewId = @"codeTextViewId";
+NSString *const kCommentTextViewId = @"commentTextViewId";
+NSString *const kQuestionTextViewId = @"questionTextViewId";
+NSString *const kAnswerTextViewId = @"answerTextViewId";
+
 NSString *const kCodeMarker = @"@code";
 NSString *const kHeaderMarker = @"@header";
 NSString *const kCommentMarker = @"@comment";
@@ -333,10 +338,11 @@ NSString *const kEndMarker = @"@end";
 
 - (BOOL)textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
 	if (commandSelector == @selector(insertTab:)) {
-		[[textView window] selectNextKeyView:nil];
 		if ([textView.identifier isEqualToString:@"answerTextViewId"]) {
-			[textView.window selectNextKeyView:nil]; //skip past the tableview to get to questionTextView
+			[textView.window selectPreviousKeyView:nil]; //get to questionTextView
 			[self.qaArrayController insert:[DHQuestionAnswerModel new]];
+		} else {
+			[[textView window] selectNextKeyView:nil];
 		}
 		return YES;
 	} else if (commandSelector == @selector(insertBacktab:)) {

@@ -16,6 +16,11 @@ extern NSString *const kQuestionMarker;
 extern NSString *const kAnswerMarker;
 extern NSString *const kEndMarker;
 
+extern NSString *const kCodeTextViewId;
+extern NSString *const kCommentTextViewId;
+extern NSString *const kQuestionTextViewId;
+extern NSString *const kAnswerTextViewId;
+
 @interface DHDocument : NSDocument <NSControlTextEditingDelegate, NSTextViewDelegate>
 @property (weak) IBOutlet NSArrayController *slideArrayController;
 @property (weak) IBOutlet NSArrayController *qaArrayController;
